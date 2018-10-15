@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>タイトル</title>
+</head>
+<body>
+    <script type="text/javascript">
+        $(function(){
+            $("#response").html("Response Values");
+
+            $("#button").click( function(){
+                var url = $("#url_post").val();
+
+                var JSONdata = {
+                    win: $("#winner").val(),
+                    // value2: $("#value2").val()
+                };
+
+                url = url + $("#value1").val();
+
+                alert(JSON.stringify(JSONdata));
+
+                $.ajax({
+                    type : 'PUT',
+                    url : url,
+                    data : JSON.stringify(JSONdata),
+                    contentType: 'application/JSON',
+                    dataType : 'JSON',
+                    scriptCharset: 'utf-8',
+                    success : function(data) {
+
+                        // Success
+                        alert("success");
+                        alert(JSON.stringify(data));
+                        $("#response").html(JSON.stringify(data));
+                    },
+                    error : function(data) {
+
+                        // Error
+                        alert("error");
+                        alert(JSON.stringify(data));
+                        alert(url);
+                        $("#response").html(JSON.stringify(data));
+                    }
+                });
+            })
+        })
+    </script>
+
+    <h1>試合結果送信フォーム</h1>
+    <p>URL: <input type="text" id="url_post" name="url" size="100" value="http://localhost:8080/"></p>
+    <p>試合番号: <input type="text" id="value1" size="30" value=""></p>
+    <p>勝者: <input type="text" id="winner" size="30" value=""></p>
+    <p><button id="button" type="button">submit</button></p>
+    <textarea id="response" cols=120 rows=10 disabled></textarea>
+</body>
+</html>

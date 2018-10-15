@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=10.0, user-scalable=yes">
+    <title>ドッジボール</title>
+</head>
+<body>
+<header id="top-head">
+    <div class="inner">
+        <div id="mobile-head">
+            <h1 class="logo">Basketball</h1>
+            <div id="nav-toggle">
+                <div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div><!---mobile-head end -->
+        <nav id="global-nav" role="navigation">
+            <div id="gnav-container">
+                <ul id="gnav-ul" class="clearfix">
+                    <li><a href="#">html</a></li>
+                    <li><a href="#">css</a></li>
+                    <li><a href="#">jquery</a></li>
+                    <li><a href="#">unity</a></li>
+                    <li><a href="#">javascript</a></li>
+                </ul>
+            </div>
+        </nav>
+    </div><!---inner end------>
+</header>
+<script>
+    $(function() {
+        var $header = $('#top-head');
+        // Nav Fixed
+        $(window).scroll(function() {
+            if ($(window).scrollTop() > 250) {
+                $header.addClass('fixed');
+            } else {
+                $header.removeClass('fixed');
+            }
+        });
+        // Nav Toggle Button
+        $('#nav-toggle').click(function(){
+            $header.toggleClass('open');
+        });
+    });
+</script>
+<!--<h1>トーナメント</h1>-->
+<div class="canvas_area" style="width:100%; margin-top:50px; overflow-x: scroll">
+<canvas id="tournament" width="1550px" height="300"></canvas>
+</div>
+
+<script type="text/javascript" src="../js/main.js"></script>
+
+<div class="footer">
+    <p>試合中: 4E vs 5E</p>
+</div>
+<style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #666;
+        color: white;
+        text-align: center;
+    }
+</style>
+</body>
+</html>
